@@ -38,19 +38,6 @@ export default new Vuex.Store({
         return
       }
       const userPay = []
-
-      // ogori
-      const maxPaymentUser = _.max(users, (user) => user.inputPayment)
-      if (maxPaymentUser.inputPayment >= this.state.totalPayment) {
-        users.forEach((user) => {
-          userPay[user.id] = 0
-        })
-        userPay[maxPaymentUser.id] = this.state.totalPayment
-        alert('OGORI!!!!')
-        state.userPayments = userPay
-        return
-      }
-
       const [normalPaymentUsers, specialPaymentUsers] = _.partition(users, (user) => user.inputPayment == null)
       const specialPayment = _.reduce(specialPaymentUsers, (sum, user) => sum + user.inputPayment, 0)
       const remainingPayment = this.state.totalPayment - specialPayment
