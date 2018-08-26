@@ -1,5 +1,5 @@
 <template>
-  <div class="input-group mb3">
+  <div class="input-group mb-3">
       <div class="input-group-prepend">
          <span class="input-group-text">名前入れろ</span>
       </div>
