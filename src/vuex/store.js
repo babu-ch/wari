@@ -19,20 +19,20 @@ export default new Vuex.Store({
       Vue.set(user, 'inputPayment', null)
       state.users.unshift(user)
     },
-    changeUserInputPayment (state, payload) {
+    removeUser (state, id) {
+      const otherUsers = _.reject(state.users, {id})
+      state.users = otherUsers
+    },
+    changeUserInputPayment(state, payload) {
       const user = _.findWhere(state.users, {id: payload.id})
       console.log(user)
       Vue.set(user, 'inputPayment', payload.payment)
     },
-    setTotalPayment (state, payment) {
+    setTotalPayment(state, payment) {
       state.totalPayment = payment
       console.log('ttlPayment', payment)
     },
-    updateUserPayments(state, payments) {
-      console.log(payments)
-      state.userPayments = payments
-    },
-    updateUserPayments2 (state) {
+    updateUserPayments2(state) {
       const users = state.users
       if (users.length === 0) {
         return

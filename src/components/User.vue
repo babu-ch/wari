@@ -9,11 +9,20 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">額を変更</span>
                     </div>
-                    <input type="number" class="form-control" v-model.number="userPayment" v-on:change="changeUserPayment" placeholder="変更後の額を入力してね！">
+                    <input
+                        type="number"
+                        class="form-control"
+                        v-model.number="userPayment"
+                        v-on:change="changeUserPayment"
+                        placeholder="変更後の額を入力してね！"
+                    >
                 </div>
                 <button type="button" class="btn btn-primary" v-on:click="toHalfPrice">半額にする</button>
                 <button type="button" class="btn btn-primary" v-on:click="toFreePrice">タダにする</button>
             </div>
+            <button type="button" class="close" aria-label="閉じる" v-on:click="deleteUser">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
     </li>
 </template>
@@ -57,8 +66,11 @@ export default {
       this.changeUserPayment()
     },
     validateUserPayment () {
+      if (this.userPayment < 0) {
+        throw new Error('負数入れてんじゃねーぞ')
+      }
       if (this.userPayment >= this.$store.state.totalPayment) {
-        throw new Error('それじゃおごりじゃねーか')
+        throw new Error('それじゃおごりじゃねーか');
       }
       // 全員が支払額変更後されたら困るのでさせないようにする
       const otherUser = _.filter(this.$store.state.users, (user) => user.id !== this.user.id)
@@ -66,6 +78,10 @@ export default {
       if (otherUser.length === otherSpecialPaymentUser.length) {
         throw new Error('全員の支払額いじってんじゃねーぞ')
       }
+    },
+    deleteUser () {
+      this.$store.commit('removeUser', this.user.id)
+      this.$store.commit('updateUserPayments2')
     }
   },
   filters: {
