@@ -50,18 +50,11 @@ export default {
       if (this.userPayment >= this.$store.state.totalPayment) {
         throw new Error('それじゃおごりじゃねーか')
       }
-      const otherSpecialPaymentUser = _.filter(
-        _.filter(this.$store.state.users, (user) => user.id !== this.user.id),
-        (user) => user.inputPayment !== null
-      )
-      const otherUserId = _.pluck(otherSpecialPaymentUser, 'id')
-      const payments = this.$store.state.userPayments
-      const otherPayments = _.reduce(otherUserId, (sum, id) => sum + payments[id], 0)
-      const totalPayments = otherPayments + this.userPayment
-      if (otherSpecialPaymentUser.length !== 0) {
-        if (totalPayments < this.$store.state.totalPayment) {
-          throw new Error('金たりねぇよ')
-        }
+      // 全員が支払額変更後されたら困るのでさせないようにする
+      const otherUser = _.filter(this.$store.state.users, (user) => user.id !== this.user.id)
+      const otherSpecialPaymentUser = _.filter(otherUser, (user) => user.inputPayment !== null)
+      if (otherUser.length === otherSpecialPaymentUser.length) {
+        throw new Error('全員の支払額いじってんじゃねーぞ')
       }
     }
   },
