@@ -11,8 +11,8 @@
                     </div>
                     <input type="number" class="form-control" v-model.number="userPayment" v-on:change="changeUserPayment" placeholder="変更後の額を入力してね！">
                 </div>
-                <button type="button" class="btn btn-primary">半額にする</button>
-                <button type="button" class="btn btn-primary">タダにする</button>
+                <button type="button" class="btn btn-primary" v-on:click="toHalfPrice">半額にする</button>
+                <button type="button" class="btn btn-primary" v-on:click="toFreePrice">タダにする</button>
             </div>
         </div>
     </li>
@@ -47,6 +47,14 @@ export default {
       this.$store.commit('changeUserInputPayment', {id: this.user.id, payment: this.userPayment})
       this.$store.commit('updateUserPayments2')
       this.userPayment = null
+    },
+    toHalfPrice () {
+      this.userPayment = this.payment / 2
+      this.changeUserPayment()
+    },
+    toFreePrice () {
+      this.userPayment = 0
+      this.changeUserPayment()
     },
     validateUserPayment () {
       if (this.userPayment >= this.$store.state.totalPayment) {
