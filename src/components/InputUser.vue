@@ -1,7 +1,9 @@
 <template>
-  <div class="hello">
-      user
-    <input type="text" v-model="userName" v-on:change="addUser">
+  <div class="input-group mb3">
+      <div class="input-group-prepend">
+         <span class="input-group-text">名前入れろ</span>
+      </div>
+      <input type="text" class="form-control" v-model="userName" v-on:change="addUser">
   </div>
 </template>
 

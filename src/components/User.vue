@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="list-group">
         {{user.name}} = {{payment|ceil}}
         <input type="number" v-model.number="userPayment" v-on:change="changeUserPayment">
     </div>

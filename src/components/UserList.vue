@@ -1,9 +1,7 @@
 <template>
-    <ul>
-        <li v-for="user in this.$store.state.users">
-            <user :user="user"></user>
-        </li>
-    </ul>
+    <div class="list-group">
+        <user v-for="user in this.$store.state.users" :user="user"></user>
+    </div>
 </template>
 
 <script>
