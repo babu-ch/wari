@@ -8,7 +8,7 @@ export default new Vuex.Store({
   state: {
     users: [],
     userPayments: [],
-    totalPayment: 0
+    totalPayment: null
   },
   mutations: {
     addUser (state, userName) {

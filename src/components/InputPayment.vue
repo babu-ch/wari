@@ -3,7 +3,7 @@
     <div class="input-group-prepend">
       <span class="input-group-text">総額入れろ</span>
     </div>
-    <input type="number" v-model.number="totalPayment" v-on:change="changeTotalPayment" class="form-control">
+    <input type="number" v-model.number="totalPayment" v-on:change="changeTotalPayment" class="form-control" placeholder="一番最初に入力してね">
   </div>
 </template>
 
@@ -12,7 +12,7 @@ export default {
   name: 'InputPayment',
   data () {
     return {
-      totalPayment: 0
+      totalPayment: null
     }
   },
   methods: {

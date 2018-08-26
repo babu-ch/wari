@@ -1,10 +1,12 @@
 <template>
-  <div class="input-group mb-3">
-      <div class="input-group-prepend">
-         <span class="input-group-text">名前入れろ</span>
+    <div>
+      <div class="input-group mb-3">
+          <div class="input-group-prepend">
+             <span class="input-group-text">名前入れろ</span>
+          </div>
+          <input type="text" class="form-control" v-model="userName" v-on:change="addUser" placeholder="入力後enter押してね">
       </div>
-      <input type="text" class="form-control" v-model="userName" v-on:change="addUser">
-  </div>
+    </div>
 </template>
 
 <script>

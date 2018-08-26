@@ -11,6 +11,8 @@
                     </div>
                     <input type="number" class="form-control" v-model.number="userPayment" v-on:change="changeUserPayment" placeholder="変更後の額を入力してね！">
                 </div>
+                <button type="button" class="btn btn-primary">半額にする</button>
+                <button type="button" class="btn btn-primary">タダにする</button>
             </div>
         </div>
     </li>
