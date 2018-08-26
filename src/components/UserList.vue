@@ -1,7 +1,7 @@
 <template>
-    <div class="list-group">
+    <ul class="list-group">
         <user v-for="user in this.$store.state.users" :user="user"></user>
-    </div>
+    </ul>
 </template>
 
 <script>

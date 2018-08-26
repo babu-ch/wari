@@ -1,8 +1,19 @@
 <template>
-    <div class="list-group">
-        {{user.name}} = {{payment|ceil}}
-        <input type="number" v-model.number="userPayment" v-on:change="changeUserPayment">
-    </div>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-sm content">
+                    {{user.name}}さん 支払額：{{payment|ceil}}
+            </div>
+            <div class="col-sm">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">額を変更</span>
+                    </div>
+                    <input type="number" class="form-control" v-model.number="userPayment" v-on:change="changeUserPayment" placeholder="変更後の額を入力してね！">
+                </div>
+            </div>
+        </div>
+    </li>
 </template>
 
 <script>
@@ -42,7 +53,7 @@ export default {
       const otherSpecialPaymentUser = _.filter(
         _.filter(this.$store.state.users, (user) => user.id !== this.user.id),
         (user) => user.inputPayment !== null
-      );
+      )
       const otherUserId = _.pluck(otherSpecialPaymentUser, 'id')
       const payments = this.$store.state.userPayments
       const otherPayments = _.reduce(otherUserId, (sum, id) => sum + payments[id], 0)
@@ -63,4 +74,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+    li {
+        padding: 30px;
+    }
 </style>
