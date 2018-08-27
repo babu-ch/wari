@@ -7,12 +7,13 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     users: [],
-    totalPayment: null
+    totalPayment: null,
+    autoIncrementId: 0
   },
   mutations: {
     addUser (state, userName) {
       const user = {}
-      const id = state.users.length
+      const id = this.state.autoIncrementId++
       Vue.set(user, 'id', id)
       Vue.set(user, 'name', userName)
       Vue.set(user, 'inputPayment', null)
