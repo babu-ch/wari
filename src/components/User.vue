@@ -70,13 +70,7 @@ export default {
         throw new Error('負数入れてんじゃねーぞ')
       }
       if (this.userPayment >= this.$store.state.totalPayment) {
-        throw new Error('それじゃおごりじゃねーか');
-      }
-      // 全員が支払額変更後されたら困るのでさせないようにする
-      const otherUser = _.filter(this.$store.state.users, (user) => user.id !== this.user.id)
-      const otherSpecialPaymentUser = _.filter(otherUser, (user) => user.inputPayment !== null)
-      if (otherUser.length === otherSpecialPaymentUser.length) {
-        throw new Error('全員の支払額いじってんじゃねーぞ')
+        throw new Error('それじゃおごりじゃねーか')
       }
     },
     deleteUser () {
