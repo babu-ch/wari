@@ -28,7 +28,7 @@ export default {
         alert('なんでやねん')
         return
       }
-      this.$store.commit('setTotalPayment', this.totalPayment);
+      this.$store.commit('setTotalPayment', this.totalPayment)
       this.$store.commit('updateUserPayments2')
     }
   }
