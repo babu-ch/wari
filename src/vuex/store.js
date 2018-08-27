@@ -30,6 +30,10 @@ export default new Vuex.Store({
     setTotalPayment (state, payment) {
       state.totalPayment = payment
     },
+    /**
+     * 計算してpaymentを設定する
+     * @param state
+     */
     updateUserPayments2 (state) {
       const users = state.users
       if (users.length === 0) {

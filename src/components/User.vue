@@ -72,6 +72,21 @@ export default {
       if (this.userPayment >= this.$store.state.totalPayment) {
         throw new Error('それじゃおごりじゃねーか')
       }
+      const otherUser = _.reject(this.$store.state.users, {id: this.user.id});
+      if (this.userPayment === 0) {
+        const payUsers = _.filter(otherUser, (user) => user.payment !== 0)
+        if (payUsers.length === 1) {
+          throw new Error('おごりになっちまうぞ')
+        }
+      }
+      const otherSpecialPaymentUser = _.filter(otherUser, (user) => user.inputPayment !== null)
+      // 自分以外の全員のpaymentが編集されている
+      if (otherUser.length === otherSpecialPaymentUser.length) {
+        const otherPayment = _.reduce(otherSpecialPaymentUser, (sum, user) => sum + user.payment, 0)
+        if ((otherPayment + this.userPayment) <= this.$store.state.totalPayment) {
+          throw new Error('お金足りてねええ！！！！！！１１１')
+        }
+      }
     },
     deleteUser () {
       this.$store.commit('removeUser', this.user.id)
