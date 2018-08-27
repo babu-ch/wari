@@ -40,7 +40,7 @@ export default {
   },
   computed: {
     payment () {
-      return this.$store.state.userPayments[this.user.id]
+      return this.user.payment
     }
   },
   methods: {
