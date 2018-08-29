@@ -69,10 +69,12 @@ export default {
       if (this.userPayment < 0) {
         throw new Error('負数入れてんじゃねーぞ')
       }
+      // 入力値が総額を超えている
       if (this.userPayment >= this.$store.state.totalPayment) {
         throw new Error('それじゃおごりじゃねーか')
       }
       const otherUser = _.reject(this.$store.state.users, {id: this.user.id});
+      // 自分がタダの時に支払うユーザが一人しかいない
       if (this.userPayment === 0) {
         const payUsers = _.filter(otherUser, (user) => user.payment !== 0)
         if (payUsers.length === 1) {
