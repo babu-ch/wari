@@ -33,6 +33,6 @@ export default {
     }
     .fade-leave-to {
         opacity: 0;
-        transform: translateY(-200px);
+        transform: translateY(-30px);
     }
 </style>
