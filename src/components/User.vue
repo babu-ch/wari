@@ -39,11 +39,13 @@ export default {
     }
   },
   computed: {
+    // userの支払額
     payment () {
       return this.user.payment
     }
   },
   methods: {
+    // 入力されたuserPaymentを反映する
     changeUserPayment () {
       try {
         this.validateUserPayment()
@@ -52,19 +54,21 @@ export default {
         this.userPayment = null
         return
       }
-
       this.$store.commit('changeUserInputPayment', {id: this.user.id, payment: this.userPayment})
       this.$store.commit('updateUserPayments2')
       this.userPayment = null
     },
+    // 半額ボタン
     toHalfPrice () {
       this.userPayment = this.payment / 2
       this.changeUserPayment()
     },
+    // タダボタン
     toFreePrice () {
       this.userPayment = 0
       this.changeUserPayment()
     },
+    // 入力値のバリデーと
     validateUserPayment () {
       if (this.userPayment < 0) {
         throw new Error('負数入れてんじゃねーぞ')
@@ -90,6 +94,7 @@ export default {
         }
       }
     },
+    // ユーザー削除
     deleteUser () {
       // 他のユーザーが一人しかいない場合支払い情報をクリア
       const otherUsers = this.$store.getters.otherUsers(this.user.id)
