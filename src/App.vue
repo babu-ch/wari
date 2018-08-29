@@ -1,5 +1,6 @@
 <template>
   <div id="app" clas="container">
+      <h1 id="title">割り勘アプリ</h1>
       <input-payment></input-payment>
       <input-user></input-user>
       <user-list></user-list>
@@ -30,5 +31,8 @@ export default {
   margin: 60px auto;
   color: #2c3e50;
   width: 600px;
+}
+#title {
+    margin-bottom: 20px;
 }
 </style>
