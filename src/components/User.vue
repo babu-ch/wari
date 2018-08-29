@@ -91,7 +91,12 @@ export default {
       }
     },
     deleteUser () {
-      this.$store.commit('removeUser', this.user.id)
+      // 他のユーザーが一人しかいない場合支払い情報をクリア
+      const otherUsers = this.$store.getters.otherUsers(this.user.id)
+      if (otherUsers.length === 1) {
+        this.$store.commit('clearAllUserInputPayment')
+      }
+      this.$store.commit('removeUser', this.user.id);
       this.$store.commit('updateUserPayments2')
     }
   },

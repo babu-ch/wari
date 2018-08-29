@@ -28,6 +28,11 @@ export default new Vuex.Store({
       const user = _.findWhere(state.users, {id: payload.id})
       Vue.set(user, 'inputPayment', payload.payment)
     },
+    clearAllUserInputPayment(state) {
+      state.users.forEach((user) => {
+        user.inputPayment = null
+      })
+    },
     setTotalPayment (state, payment) {
       state.totalPayment = payment
     },
@@ -50,6 +55,11 @@ export default new Vuex.Store({
       specialPaymentUsers.forEach((user) => {
         user.payment = user.inputPayment
       })
+    },
+  },
+  getters: {
+    otherUsers: (state) => (id) => {
+      return _.reject(state.users, {id})
     }
   }
 })
