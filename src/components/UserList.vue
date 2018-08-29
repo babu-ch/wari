@@ -1,7 +1,7 @@
 <template>
-    <ul class="list-group">
-        <user v-for="user in this.$store.state.users" :user="user"></user>
-    </ul>
+      <transition-group tag="ul" class="list-group" name="fade">
+        <user v-for="user in this.$store.state.users" :user="user" :key="user.id"></user>
+      </transition-group>
 </template>
 
 <script>
@@ -17,5 +17,22 @@ export default {
 <style scoped lang="scss">
     li {
         border: 1px solid #CCC;
+    }
+    .fade-enter-active, .fade-leave-active {
+        transition: all 1s;
+    }
+    .fade-leave-active {
+        position: absolute;
+    }
+    .fade-move {
+        transition: all 1s;
+    }
+    .fade-enter {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    .fade-leave-to {
+        opacity: 0;
+        transform: translateY(-200px);
     }
 </style>
