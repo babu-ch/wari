@@ -1,9 +1,10 @@
 <template>
   <div id="app" clas="container">
-      <h1 id="title">割り勘アプリ</h1>
+      <h1 id="title">a</h1>
       <input-payment></input-payment>
       <input-user></input-user>
       <user-list></user-list>
+      <b-modal ref="modal">yea</b-modal>
   </div>
 </template>
 
@@ -14,10 +15,20 @@ import UserList from './components/UserList'
 
 export default {
   name: 'App',
+  data () {
+    return {
+      modalMessage: this.$store.state.modalMessage
+    }
+  },
   components: {
     InputPayment,
     InputUser,
     UserList
+  },
+  watch: {
+    modalMessage (message) {
+      this.$refs.modal.show(message)
+    }
   }
 }
 </script>

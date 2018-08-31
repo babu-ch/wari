@@ -24,7 +24,7 @@ export default {
       const users = this.$store.state.users
       const duplicateUser = _.findWhere(users, {name: this.userName})
       if (duplicateUser) {
-        alert('duplicate user')
+        this.$store.commit('setModalMessage', 'duplicateUser!')
         return
       }
       this.$store.commit('addUser', this.userName)

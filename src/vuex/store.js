@@ -12,7 +12,9 @@ export default new Vuex.Store({
     totalPayment: null,
     // ユーザー作成時のid 作成ごとにインクリメントする
     // もしかしたらusersのmax id+1で済むかも
-    autoIncrementId: 0
+    autoIncrementId: 0,
+    // 値が変化した時にモーダルを表示する
+    modalMessage: ''
   },
   mutations: {
     // ユーザーを追加
@@ -68,6 +70,9 @@ export default new Vuex.Store({
         user.payment = user.inputPayment
       })
     },
+    setModalMessage (state, message) {
+      state.modalMessage = message
+    }
   },
   getters: {
     otherUsers: (state) => (id) => {

@@ -5,6 +5,13 @@ import App from './App'
 import store from './vuex/store'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import bootstrapVue from 'bootstrap-vue'
+import bModal from 'bootstrap-vue/es/components/modal/modal'
+import bModalDirective from 'bootstrap-vue/es/directives/modal/modal'
+
+Vue.set(bootstrapVue)
+Vue.component('b-modal', bModal)
+Vue.directive('b-modal', bModalDirective)
 
 Vue.config.productionTip = false
 
