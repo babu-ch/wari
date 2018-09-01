@@ -1,7 +1,7 @@
 <template>
     <li class="list-group-item">
         <div class="row">
-            <div class="col-sm content">
+            <div class="col-sm content user-info">
                     {{user.name}}さん 支払額：{{payment|ceil}}
             </div>
             <div class="col-sm">

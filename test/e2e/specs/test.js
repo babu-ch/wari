@@ -11,9 +11,16 @@ module.exports = {
     browser
       .url(devServer)
       .waitForElementVisible('#app', 5000)
-      .assert.elementPresent('.hello')
-      .assert.containsText('h1', 'Welcome to Your Vue.js App')
-      .assert.elementCount('img', 1)
+      .setValue('input[name="totalPayment"]', 2000)
+      .setValue('input[name="inputUser"]', 'Mrs.Takaya')
+      .click('body')
+      .waitForElementVisible('.user-list .list-group-item', 5000)
+      .assert.containsText('.user-list li:nth-child(1) .user-info', 'Mrs.Takayaさん 支払額：2000')
+      .setValue('input[name="inputUser"]', 'OG-Takaya')
+      .click('body')
+      // 追加まち
+      .waitForElementVisible('.user-list li:nth-child(2) .user-info', 5000)
+      .assert.containsText('.user-list li:nth-child(1) .user-info', 'OG-Takayaさん 支払額：1000')
       .end()
   }
 }

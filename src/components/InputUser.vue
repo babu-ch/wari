@@ -6,6 +6,7 @@
           </div>
           <input
             type="text"
+            name="inputUser"
             class="form-control"
             v-model="userName"
             v-on:change="addUser"

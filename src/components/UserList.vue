@@ -1,5 +1,5 @@
 <template>
-      <transition-group tag="ul" class="list-group" name="fade">
+      <transition-group tag="ul" class="list-group user-list" name="fade">
         <user v-for="user in this.$store.state.users" :user="user" :key="user.id"></user>
       </transition-group>
 </template>
