@@ -25,7 +25,7 @@ export default {
   methods: {
     changeTotalPayment () {
       if (this.totalPayment < 1) {
-        alert('なんでやねん')
+        this.$store.commit('setModalMessage', 'なんでやねん')
         return
       }
       this.$store.commit('setTotalPayment', this.totalPayment)

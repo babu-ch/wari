@@ -4,7 +4,13 @@
           <div class="input-group-prepend">
              <span class="input-group-text">名前入れろ</span>
           </div>
-          <input type="text" class="form-control" v-model="userName" v-on:change="addUser" placeholder="入力後enter押してね">
+          <input
+            type="text"
+            class="form-control"
+            v-model="userName"
+            v-on:change="addUser"
+            placeholder="入力後enter押してね"
+          >
       </div>
     </div>
 </template>
@@ -21,10 +27,13 @@ export default {
   },
   methods: {
     addUser () {
-      const users = this.$store.state.users
+      if (!this.userName.length) {
+        return
+      }
+      const users = this.$store.state.users;
       const duplicateUser = _.findWhere(users, {name: this.userName})
       if (duplicateUser) {
-        this.$store.commit('setModalMessage', 'duplicateUser!')
+        this.$store.commit('setModalMessage', '重複だめ絶対')
         return
       }
       this.$store.commit('addUser', this.userName)

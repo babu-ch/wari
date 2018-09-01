@@ -50,7 +50,7 @@ export default {
       try {
         this.validateUserPayment()
       } catch (e) {
-        alert(e.message)
+        this.$store.commit('setModalMessage', e.message)
         this.userPayment = null
         return
       }

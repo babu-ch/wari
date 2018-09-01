@@ -4,7 +4,9 @@
       <input-payment></input-payment>
       <input-user></input-user>
       <user-list></user-list>
-      <b-modal ref="modal">yea</b-modal>
+      <b-modal ref="modal" @ok="modalOk" @cancel="modalCancel">
+          {{this.$store.state.modalMessage}}
+      </b-modal>
   </div>
 </template>
 
@@ -15,19 +17,30 @@ import UserList from './components/UserList'
 
 export default {
   name: 'App',
-  data () {
-    return {
-      modalMessage: this.$store.state.modalMessage
-    }
-  },
   components: {
     InputPayment,
     InputUser,
     UserList
   },
-  watch: {
-    modalMessage (message) {
-      this.$refs.modal.show(message)
+  mounted () {
+    // show modal
+    this.$store.watch(
+      (state) => {
+        return state.modalMessage
+      },
+      (message) => {
+        if (message) {
+          this.$refs.modal.show(message)
+        }
+      }
+    )
+  },
+  methods: {
+    modalOk () {
+      this.$store.commit('setModalMessage', null)
+    },
+    modalCancel () {
+      this.$store.commit('setModalMessage', null)
     }
   }
 }
