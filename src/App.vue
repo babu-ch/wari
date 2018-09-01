@@ -1,6 +1,6 @@
 <template>
   <div id="app" clas="container">
-      <h1 id="title">a</h1>
+      <h1 id="title">Warikan App</h1>
       <input-payment></input-payment>
       <input-user></input-user>
       <user-list></user-list>
