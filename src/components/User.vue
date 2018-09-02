@@ -77,7 +77,7 @@ export default {
       if (this.userPayment >= this.$store.state.totalPayment) {
         throw new Error('それじゃおごりじゃねーか')
       }
-      const otherUser = _.reject(this.$store.state.users, {id: this.user.id});
+      const otherUser = _.reject(this.$store.state.users, {id: this.user.id})
       // 自分がタダの時に支払うユーザが一人しかいない
       if (this.userPayment === 0) {
         const payUsers = _.filter(otherUser, (user) => user.payment !== 0)
@@ -101,7 +101,7 @@ export default {
       if (otherUsers.length === 1) {
         this.$store.commit('clearAllUserInputPayment')
       }
-      this.$store.commit('removeUser', this.user.id);
+      this.$store.commit('removeUser', this.user.id)
       this.$store.commit('updateUserPayments2')
     }
   },

@@ -31,7 +31,7 @@ export default {
       if (!this.userName.length) {
         return
       }
-      const users = this.$store.state.users;
+      const users = this.$store.state.users
       const duplicateUser = _.findWhere(users, {name: this.userName})
       if (duplicateUser) {
         this.$store.commit('setModalMessage', '重複だめ絶対')
