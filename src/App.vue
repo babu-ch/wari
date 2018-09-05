@@ -54,7 +54,8 @@ export default {
   text-align: center;
   margin: 60px auto;
   color: #2c3e50;
-  width: 600px;
+  width: 100%;
+  max-width: 600px;
 }
 #title {
     margin-bottom: 20px;

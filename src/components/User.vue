@@ -116,6 +116,7 @@ export default {
 <style scoped lang="scss">
     li {
         padding: 30px;
-        width: 600px;
+        width: 100%;
+        max-width: 600px;
     }
 </style>
