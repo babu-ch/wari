@@ -1,6 +1,8 @@
 # wari
 
 > A Vue.js project
+割り勘アプリ
+http://nena3.xii.jp/wari/
 
 ## Build Setup
 
